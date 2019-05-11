@@ -1,0 +1,87 @@
+<odoo>
+    <data>
+         <record id="machine_tree_view" model="ir.ui.view">
+            <field name="name">machine Tree View</field>
+            <field name="model">factory.machine</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="cost" />
+                    <field name="image" nolabel="1" widget="image" class="oe_right oe_avatar"/>
+                </tree>
+            </field>
+        </record>
+
+          <record id="machine_form_view" model="ir.ui.view">
+            <field name="name">machine Form View</field>
+            <field name="model">factory.machine</field>
+            <field name="arch" type="xml">
+                    <form>
+                        <header>
+                             <button name="draft"  type="object" string="Draft" attrs="{
+                            'invisible':['|',('state','=','dr'),('state','!=','act'),('state','!=','acc')]
+                            }" />
+                            <button name="valid"  type="object" string="Validate" attrs="{
+                            'invisible':['|',('state','=','act'),('state','=','acc')]
+                            }" />
+
+                            <button name="accept"  type="object" string="Accept" attrs="{
+                            'invisible':['|',('state','=','acc'),('state','!=','act')]
+                            }"/>
+                            <field name="state"  widget="statusbar"/>
+                        </header>
+                       <group>
+                            <group><field name="name" /></group>
+                           <group> <field name="cost" /></group>
+                           <group> <field name="taxt" /></group>
+                       </group>
+                        <group>
+                            <field name="date_now" readonly="True" widget="date"></field>
+                        </group>
+                        <group>
+                         <field name="create_uid" readonly="True"></field>
+                       </group>
+                        <group>
+                         <field name="create_date" readonly="True" widget="date"></field>
+                       </group>
+                        <group>
+                            <group>
+                                <field name="image" widget="image" attrs="{
+                                    'invisible':[('is_active','=',False)]
+                                    }"/>
+                            </group>
+                            <group>
+                                <field name="is_active" />
+                            </group>
+                        </group>
+                        <group>
+                                <field name="tags_ids"  widget="many2many_tags"
+                                       options="{'no_create_edit': True}"/>
+<!--                             <field name="state" />-->
+
+                        </group>
+                        <group>
+                            <field name="department_id" domain="[('is_accept', '!=', True)]"/>
+
+
+
+                        </group>
+                    </form>
+
+            </field>
+        </record>
+<!--        ========================== ================== -->
+        <record id="machine_action"
+                model="ir.actions.act_window">
+            <field name="name">Machines</field>
+            <field name="res_model">factory.machine</field>
+        </record>
+
+
+        <menuitem id="factory_machine"
+                  name="Machines"
+                  parent="factory_root"
+                  action="machine_action"
+        />
+    </data>
+</odoo>

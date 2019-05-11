@@ -1,0 +1,10 @@
+<odoo>
+    <template id="report_department">
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="doc">
+            <t t-call="sale.report_saleorder_document" t-lang="doc.name"/>
+            <t t-call="sale.report_saleorder_document" t-lang="doc.details"/>
+        </t>
+    </t>
+    </template>
+</odoo>

@@ -1,0 +1,13 @@
+<odoo>
+    <data>
+        <report
+            id="action_department_report"
+            string="department_machine"
+            model="factory.department"
+            report_type="qweb-pdf"
+            file="factory.factory_department"
+            name="factory.factory_department"
+
+        />
+    </data>
+</odoo>

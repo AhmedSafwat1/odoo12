@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+        <record id="hr_employee_form_inherit" model="ir.ui.view">
+            <field name="name"> hr employee form Inherit </field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"></field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='work_phone']" position="after">
+                    <field name="miltiary_certificate" />
+                </xpath>
+            </field>
+
+        </record>
+    </data>
+</odoo>

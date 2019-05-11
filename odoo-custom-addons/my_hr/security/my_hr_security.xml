@@ -1,0 +1,17 @@
+<odoo>
+    <data>
+        <record id="iti_security_category" model="ir.module.category">
+            <field name="name">Iti levels</field>
+        </record>
+         <record id="group_iti_normal" model="res.groups">
+            <field name="name">Normal user Iti</field>
+             <field name="category_id" ref="iti_security_category"/>
+        </record>
+        <record id="iti_normal_user" model="res.groups">
+            <field name="name">Normal User</field>
+            <field name="implied_ids" eval="[(4, ref('group_iti_normal'))]"/>
+            <field name="category_id" ref="iti_security_category"/>
+        </record>
+
+    </data>
+</odoo>
